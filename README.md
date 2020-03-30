@@ -1,102 +1,83 @@
-# Plot.ly Homework - Belly Button Biodiversity
+# ETL Homework - SF Restaurant Yelp and Health Score 
 
-![Bacteria by filterforge.com](Images/bacteria_by_filterforgedotcom.jpg)
+Background 
 
-In this assignment, you will build an interactive dashboard to explore the [Belly Button Biodiversity DataSet](http://robdunnlab.com/projects/belly-button-biodiversity/).
+This project was an Extract, Transform and Load Project that combined Yelp Data and the SF Restaurant Health Score 
 
-### Before You Begin
+The Question "If there was a correlation between Yelp Scores and Restaurant Health Reviews" Also if clients won't mind poor health scores if the food is good enough. 
 
-1. Create a new repository for this project called `plotly-challenge`. **Do not add this homework to an existing repository**.
 
-2. Clone the new repository to your computer.
+Tools 
 
-3. Inside your local git repository, create a directory for the Plotly challenge. Use the folder name to correspond to the challenge: **Belly_Button_Diversity**.
+## Step 1 - Juypter Notebook , and Yelp API Processor 
 
-4. This is a full stack app so add your html, js, css, python and sqlite files.
+I used the YELP Api Processor in order to pull from the YELP server restaurant data specifically from SF 
 
-5. Push the above changes to GitHub or GitLab.
 
-## Step 1 - Plotly.js
+![Yelp Processor](Images/Yelp_Processor1.png)
 
-Use Plotly.js to build interactive charts for your dashboard.
+This is the setup to the YELP API Processor, this is the payload that I configured, where I would search for all restaurant posting that has a location in San Francisco 
 
-* Create a PIE chart that uses data from your samples route (`/samples/<sample>`) to display the top 10 samples.
 
-  * Use `sample_values` as the values for the PIE chart.
+![Yelp Processor2](Images/Yelp_Processor2.png)
 
-  * Use `otu_ids` as the labels for the pie chart.
 
-  * Use `otu_labels` as the hovertext for the chart.
+I followed the guidelines and instructions provided by yelp and pulled batches of 50 for a total of 1000 restaurants. 
 
-  ![PIE Chart](Images/pie_chart.png)
+I also broke down the processor into batches where if at any point there was a failure I would know at what point it failed. 
 
-* Create a Bubble Chart that uses data from your samples route (`/samples/<sample>`) to display each sample.
 
-  * Use `otu_ids` for the x values.
+![Yelp Processor3](Images/Yelp_Processor3.png)
 
-  * Use `sample_values` for the y values.
+After Processing batches of 50, here is the 1000 restaurants I could pull from the YELP API that I converted from JSON to Data Frame and exported as a CSV 
 
-  * Use `sample_values` for the marker size.
+## Step 2 - The Transformer -  
 
-  * Use `otu_ids` for the marker colors.
+I used the YELP Api Processor in order to pull from the YELP server restaurant data specifically from SF 
 
-  * Use `otu_labels` for the text values.
+![Yelp Transformer](Images/Yelp_Transformer1.png)
 
-  ![Bubble Chart](Images/bubble_chart.png)
+This is the setup to the YELP API Processor, this is the payload that I configured, where I would search for all restaurant posting that has a location in San Francisco 
 
-* Display the sample metadata from the route `/metadata/<sample>`
 
-  * Display each key/value pair from the metadata JSON object somewhere on the page.
+![Yelp Transformer2](Images/Yelp_Transformer2.png)
 
-* Update all of the plots any time that a new sample is selected.
 
-* You are welcome to create any layout that you would like for your dashboard. An example dashboard page might look something like the following.
+I followed the guidelines and instructions provided by yelp and pulled batches of 50 for a total of 1000 restaurants. 
 
-![Example Dashboard Page](Images/dashboard_part1.png)
-![Example Dashboard Page](Images/dashboard_part2.png)
+I also broke down the processor into batches where if at any point there was a failure I would know at what point it failed. 
 
-## Step 2 - Heroku
 
-Deploy your Flask app to Heroku.
+![Yelp Transformer3](Images/Yelp_Transformer3.png)
 
-* You can use the provided sqlite file for the database.
+After Processing batches of 50, here is the 1000 restaurants I could pull from the YELP API that I converted from JSON to Data Frame and exported as a CSV 
 
-* Ask your Instructor and TAs for help!
 
-- - -
+![Yelp Transformer4](Images/Yelp_Transformer4.png)
 
-## Advanced Challenge Assignment (Optional)
 
-The following task is completely optional and is very advanced.
+![Yelp Transformer5](Images/Yelp_Transformer5.png)
 
-* Adapt the Gauge Chart from <https://plot.ly/javascript/gauge-charts/> to plot the Weekly Washing Frequency obtained from the `/metadata/<sample>`route.
 
-* You will need to modify the example gauge code to account for values ranging from 0 - 9.
+![Yelp Transformer6](Images/Yelp_Transformer6.png)
 
-* Update the chart whenever a new sample is selected.
 
-![Weekly Washing Frequency Gauge](Images/gauge.png)
+![Yelp Transformer7](Images/Yelp_Transformer7.png)
 
-- - -
 
-## Flask API
+![Yelp Transformer8](Images/Yelp_Transformer8.png)
 
-Use Flask API starter code to serve the data needed for your plots.
+## The Transformer Graph 
 
-* Test your routes by visiting each one in the browser.
+
+![Weekly Washing Frequency Gauge](Images/Scatterplot.png)
+
+![Weekly Washing Frequency Gauge](Images/heatscatterplot.png)
+
+![Weekly Washing Frequency Gauge](Images/Asianscatterplot.png)
+
+![Weekly Washing Frequency Gauge](Images/Asianheatscatterplot.png)
+
 
 - - -
 
-## Hints
-
-* Don't forget to `pip install -r requirements.txt` before you start your server.
-
-* Use `console.log` inside of your JavaScript code to see what your data looks like at each step.
-
-* Refer to the [Plotly.js Documentation](https://plot.ly/javascript/) when building the plots.
-
-- - -
-
-### Copyright
-
-Trilogy Education Services © 2019. All Rights Reserved.
